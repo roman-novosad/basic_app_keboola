@@ -6,10 +6,16 @@ Template Component main class.
 import logging
 import os
 import sys
+import csv
 from pathlib import Path
 
 from kbc.env_handler import KBCEnvHandler
 
+DEFAULT_TABLE_INPUT = "/data/in/tables/"
+DEFAULT_FILE_INPUT = "/data/in/files/"
+
+DEFAULT_FILE_DESTINATION = "/data/out/files/"
+DEFAULT_TABLE_DESTINATION = "/data/out/tables/"
 # configuration variables
 KEY_API_TOKEN = '#api_token'
 KEY_PRINT_HELLO = 'print_hello'
@@ -18,7 +24,7 @@ KEY_PRINT_HELLO = 'print_hello'
 KEY_DEBUG = 'debug'
 
 # list of mandatory parameters => if some is missing, component will fail with readable message on initialization.
-MANDATORY_PARS = [KEY_DEBUG]
+MANDATORY_PARS = []
 MANDATORY_IMAGE_PARS = []
 
 APP_VERSION = '0.0.1'
@@ -57,13 +63,25 @@ class Component(KBCEnvHandler):
         '''
         Main execution code
         '''
-        params = self.cfg_params  # noqa
+        source_file_path = DEFAULT_TABLE_INPUT + 'properties.csv'
+        logging.info(source_file_path)
 
-        # ####### EXAMPLE TO REMOVE
-        if params.get(KEY_PRINT_HELLO):
-            logging.info("Hello World")
+        result_file_path = DEFAULT_TABLE_DESTINATION + 'properties_id.csv'
+        logging.info(result_file_path)
 
-        # ####### EXAMPLE TO REMOVE END
+        with open(source_file_path, 'r') as input, open(result_file_path, 'w+', newline='') as out:
+            reader = csv.DictReader(input)
+            new_columns = reader.fieldnames
+
+            new_columns.append('row_number')
+            writer = csv.DictWriter(out, fieldnames=new_columns, lineterminator='\n', delimiter=',')
+            writer.writeheader()
+            for index, l in enumerate(reader):
+                # if param_print_lines:
+                # print(f'Printing line {index}: {l}')
+                l['row_number'] = index
+                writer.writerow(l)
+        print('done')
 
 
 """
