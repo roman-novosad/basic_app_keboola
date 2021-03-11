@@ -11,15 +11,3 @@ services:
       - ./:/code
       - ./data:/data
     mem_limit: 256m
-    image: %env(DOCKER_REPO)%
-    deploy:
-      replicas: 1
-    secrets:
-      - my_secret
-
-secrets:
-  my_secret:
-    file: ./my_secret.txt
-
-
-
