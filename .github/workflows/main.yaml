@@ -12,7 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Docker login
-        run: echo docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASS }}
+        run: docker login
+        env: ${{ secrets.DOCKER_USER }}
+        env: ${{ secrets.DOCKER_PASS }}
       - name: Docker build
         run: docker-compose build
       - name: docker push
