@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    env_file: .env
+    
     # aby se nemuselo neustale vystavovat znovu
     volumes:
       - ./:/code
