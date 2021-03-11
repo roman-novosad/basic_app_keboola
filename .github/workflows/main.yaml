@@ -2,7 +2,7 @@ name: docker compose push
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:
