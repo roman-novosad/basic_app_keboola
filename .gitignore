@@ -6,6 +6,9 @@ __pycache__/
 .DS_Store
 /example/.project
 /example/.pydevproject
+.env
+my_secret.txt
+.dockerignore
 
 # kbc datafolder
 /data
