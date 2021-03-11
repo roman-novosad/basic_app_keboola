@@ -16,5 +16,5 @@ jobs:
       - name: Docker build
         run: docker-compose build
       - name: docker push
-        run: docker-compose push ${{ secrets.DOCKER_REPO }}
+        run: docker-compose push
 
