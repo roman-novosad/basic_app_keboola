@@ -13,8 +13,9 @@ jobs:
       - name: Docker login
         run: docker login
         with:
-          - ${{ secrets.DOCKER_USER }}
-          - ${{ secrets.DOCKER_PASS }}
+          registry: docker.io
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASS }}
       - name: Docker build
         run: docker-compose build
       - name: docker push
