@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: ${{ secrets.DOCKER_USER }}
+    image: ${{ secrets.DOCKER_REPO }}
     # aby se nemuselo neustale vystavovat znovu
     volumes:
       - ./:/code
