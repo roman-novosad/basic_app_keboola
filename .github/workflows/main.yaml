@@ -10,10 +10,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: Docker login
+      -
+        name: Docker login
         uses: ./
         with:
-          registry: docker.io
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_PASS }}
       - name: Docker build
