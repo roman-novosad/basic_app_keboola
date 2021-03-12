@@ -11,4 +11,3 @@ my_secret.txt
 .dockerignore
 
 # kbc datafolder
-/data
