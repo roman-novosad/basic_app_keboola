@@ -4,8 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: pavlamor/demo
-    # aby se nemuselo neustale vystavovat znovu
+    image: bloud/demo
     volumes:
       - ./:/code
       - ./data:/data
