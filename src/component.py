@@ -86,6 +86,7 @@ class Component(KBCEnvHandler):
 
 """
         Main entrypoint
+	adding some nonsense
 """
 if __name__ == "__main__":
     if len(sys.argv) > 1:
